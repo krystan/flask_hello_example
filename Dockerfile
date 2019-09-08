@@ -3,7 +3,7 @@ ENV STATIC_URL /static
 ENV STATIC_PATH /var/www/app/static
 
 COPY ./requirements.txt /var/www/requirements.txt
-COPY ./app /app
+COPY ./app /app/app
 COPY ./main.py /app/main.py
 COPY ./uwsgi.ini /app/uwsgi.ini
 
