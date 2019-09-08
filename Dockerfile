@@ -4,11 +4,9 @@ ENV STATIC_PATH /var/www/app/static
 
 COPY ./requirements.txt /var/www/requirements.txt
 COPY ./app /app
+COPY ./main.py /app/main.py
+COPY ./uwsgi.ini /app/uwsgi.ini
 
-RUN apk --nocache --update add bash nano \
-  && pip install -r /var/www/requirements.txt \
-  && addgroup -S flaskapp \
-  && adduser -S flaskapp -G flaskapp \
-  && chown -R flaskapp:flaskapp /app
-
-USER flaskapp
+RUN apk --no-cache --update add bash nano \
+  && pip install --upgrade pip \
+  && pip install -r /var/www/requirements.txt 
